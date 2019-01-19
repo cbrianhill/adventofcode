@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -310,10 +311,20 @@ public class Day19 {
             opName = "eqrr";
         }
 
+        private static HashSet<Integer> valueHistory = new HashSet<>();
+
         @Override
         public void operate(int[] args, int[] registers) {
             int operand1 = registers[args[0]];
             int operand2 = registers[args[1]];
+            /*  -- Added to solve Day 21, part 2
+            System.out.println("Comparing " + operand1 + " and " + operand2);
+            if (valueHistory.contains(operand1)) {
+                System.out.println("Found duplicate: " + operand1);
+                System.exit(0);
+            }
+            valueHistory.add(operand1);
+            */
             if (operand1 == operand2)
                 registers[args[2]] = 1;
             else

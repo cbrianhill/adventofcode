@@ -1,0 +1,32 @@
+#ip 4
+ 0 seti 123 0 5            reg5 = 123
+ 1 bani 5 456 5            reg5 = reg5 & 456
+ 2 eqri 5 72 5             reg5 = reg5 == 72
+ 3 addr 5 4 4             *reg4 = reg5 + reg4
+ 4 seti 0 0 4              reg4 = 0
+ 5 seti 0 7 5              reg5 = 0
+ 6 bori 5 65536 3          reg3 = reg5 | 65536
+ 7 seti 733884 6 5         reg5 = 733884
+ 8 bani 3 255 1            reg1 = reg3 & 255
+ 9 addr 5 1 5              reg5 = reg5 + reg1
+10 bani 5 16777215 5       reg5 = reg5 & 16777215
+11 muli 5 65899 5          reg5 = reg5 * 65899
+12 bani 5 16777215 5       reg5 = reg5 & 16777215
+13 gtir 256 3 1            reg1 = 256 > reg3       # When true, program will halt
+14 addr 1 4 4             *reg4 = reg1 + reg4
+15 addi 4 1 4              reg4 = reg4 + 1
+16 seti 27 8 4             reg4 = 27
+17 seti 0 6 1              reg1 = 0
+18 addi 1 1 2              reg2 = reg1 + 1
+19 muli 2 256 2            reg2 = reg2 * 256
+20 gtrr 2 3 2              reg2 = reg2 > reg3
+21 addr 2 4 4              reg4 = reg2 + reg4
+22 addi 4 1 4              reg4 = reg4 + 1
+23 seti 25 4 4             reg4 = 25
+24 addi 1 1 1              reg1 = reg1 + 1
+25 seti 17 8 4             reg4 = 17
+26 setr 1 7 3              reg3 = reg1
+27 seti 7 0 4              reg4 = 7
+28 eqrr 5 0 1              reg1 = reg5 == reg0
+29 addr 1 4 4              reg4 = reg1 + reg4
+30 seti 5 9 4              reg4 = 5
