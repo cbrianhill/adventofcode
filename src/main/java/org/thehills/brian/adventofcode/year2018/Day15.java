@@ -2,7 +2,6 @@ package org.thehills.brian.adventofcode.year2018;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
-import sun.reflect.generics.tree.TypeArgument;
 
 import java.io.*;
 import java.util.*;
