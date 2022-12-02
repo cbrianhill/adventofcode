@@ -17,13 +17,17 @@ code_2: Dict[str, str] = {
     "Z": "win"
 }
 
+# winner -> loser
 wins: Dict[str, str] = {
     "rock":     "scissors",
     "paper":    "rock",
     "scissors": "paper"
 }
+
+# loser -> winner
 losses: Dict[str, str] = { v: k for k, v in wins.items() }
 
+# desired outcome -> opponent move -> desired move
 outcomes: Dict[str, Dict[str, str]] = {
     "win":  losses,
     "loss": wins
@@ -60,16 +64,18 @@ with open ("input.txt") as file:
     for line in lines:
         moves = line.split()
         elf_move = code_1[moves[0]]
+
+        # Part 1
         my_move_1 = code_1[moves[1]]
-        my_score_1 += scores[my_move_1]
         outcome_1 = who_won(elf_move, my_move_1)
-        my_score_1 += scores[outcome_1]
+        my_score_1 += (scores[my_move_1] + scores[outcome_1])
         print(f"Elf move (part 1): {elf_move}, My move: {my_move_1}, Outcome: {outcome_1}")
+
+        # Part 2
         desired_outcome = code_2[moves[1]]
         my_move_2 = what_move(elf_move, desired_outcome)
         outcome_2 = who_won(elf_move, my_move_2)
-        my_score_2 += scores[my_move_2]
-        my_score_2 += scores[outcome_2]
+        my_score_2 += (scores[my_move_2] + scores[outcome_2])
         print(f"Elf move (part 2): {elf_move}, My move: {my_move_2}, Desired Outcome: {desired_outcome} Outcome: {outcome_2}")
 
     print(f"Part 1: My total score is {my_score_1}")
