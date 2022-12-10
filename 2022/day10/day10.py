@@ -38,7 +38,7 @@ def display(screen: List[List[bool]]) -> None:
     for r in screen:
         output = ""
         for c in r:
-            output += "#" if c else "."
+            output += "#" if c else " "
         print(output)
 
 with open("input.txt") as file:
