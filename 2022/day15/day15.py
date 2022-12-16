@@ -59,16 +59,19 @@ with open("input.txt") as file:
     intersecting = set()
     for s in sensors:
         print(f"Examining sensor {s}")
-        boundary = find_boundary(s, sensors[s])
-        if len(boundary_points) == 0:
-            boundary_points = boundary
-        else:
-            boundary_points = boundary_points.intersection(boundary)
-            if len(boundary_points) > 0:
-                intersecting.update(boundary_points)
-        print(f"Boundary points: ({len(boundary_points)})")
+        s_boundary = find_boundary(s, sensors[s])
+        for t in sensors:
+            if s != t:
+                print(f" -> Examining sensor {t}")
+                t_boundary = find_boundary(t, sensors[t])
+                inter= s_boundary.intersection(t_boundary)
+                if len(inter) > 0:
+                    intersecting.update(inter)
+
     print(f"There are {len(intersecting)} intersecting points")
     for p in intersecting:
+        if p[0] < 0 or p[0] > 4000000 or p[1] < 0 or p[1] > 4000000:
+            continue
         possible = True
         for s in sensors:
             if in_range(s, sensors[s], p):
